@@ -1,0 +1,91 @@
+mysql> create database Sample;
+Query OK, 1 row affected (0.12 sec)
+
+mysql> use Sample;
+Database changed
+
+mysql> create table Employee(emp_id int auto_increment Primary Key, first_name varchar(50), last_name varchar(50), age int, email varchar(100));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc Employee;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| emp_id     | int          | NO   | PRI | NULL    | auto_increment |
+| first_name | varchar(50)  | YES  |     | NULL    |                |
+| last_name  | varchar(50)  | YES  |     | NULL    |                |
+| age        | int          | YES  |     | NULL    |                |
+| email      | varchar(100) | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.04 sec)
+
+Task 1:
+mysql> INSERT INTO Employee (first_name, last_name, age, email)
+    -> VALUES
+    -> ('Kiran', 'Patil', 23, 'kiranp@gmail.com'),
+    -> ('Vami','Kohali',20,'vamika18@gmail.com')
+    -> ('Siri','Patil',31,'siripatil@gmail.com'),
+    -> ('Poo','Patil',45,'poojapatil@gmail.com');
+
+Query OK, 2 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0    
+
+mysql>   select* 
+                from Employee;
++--------+------------+-----------+------+----------------------+
+| emp_id | first_name | last_name | age  | email                |
++--------+------------+-----------+------+----------------------+
+|      1 | Kiran      | Patil     |   23 | kiranp@gmail.com     |
+|      2 | Vami       | Kohali    |   20 | vamika18@gmail.com   |
+|      3 | Akki       | Yadav     |   27 | akkiy@gmail.com      |
+|      4 | Siri       | Patil     |   32 | siripatil@gmail.com  |
+|      5 | Poo        | Patil     |   46 | poojapatil@gmail.com |
++--------+------------+-----------+------+----------------------+
+5 rows in set (0.00 sec)
+
+Task 2:
+mysql>   select first_name,last_name 
+               from Employee;
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| Kiran      | Patil     |
+| Vami       | Kohali    |
+| Akki       | Yadav     |
+| Siri       | Patil     |
+| Poo        | Patil     |
++------------+-----------+
+5 rows in set (0.00 sec)
+
+Task 3:
+mysql>   select first_name,last_name,age 
+                from Employee where age>30;
+
++------------+-----------+------+
+| first_name | last_name | age  |
++------------+-----------+------+
+| Siri       | Patil     |   31 |
+| Poo        | Patil     |   45 |
++------------+-----------+------+
+2 rows in set (0.00 sec)
+
+Task 4 :
+mysql>  UPDATE Employee   
+               SET age = age + 1  
+               WHERE age > 25;
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select* from Employee;
++--------+------------+-----------+------+----------------------+
+| emp_id | first_name | last_name | age  | email                |
++--------+------------+-----------+------+----------------------+
+|      1 | Kiran      | Patil     |   23 | kiranp@gmail.com     |
+|      2 | Vami       | Kohali    |   20 | vamika18@gmail.com   |
+|      3 | Akki       | Yadav     |   27 | akkiy@gmail.com      |
+|      4 | Siri       | Patil     |   32 | siripatil@gmail.com  |
+|      5 | Poo        | Patil     |   46 | poojapatil@gmail.com |
++--------+------------+-----------+------+----------------------+
+5 rows in set (0.00 sec)
+
+
